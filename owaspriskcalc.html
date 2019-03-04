@@ -138,9 +138,10 @@
 			else if(LS_risk == "Low" && IST_risk == "Medium") 
 				actual_risk = "Low";
 			else if(LS_risk == "Low" && IST_risk == "Low") 
-				actual_risk = "Low";							
-
-			$(MS).children().eq(no)[0].innerText = "--> " + actual_risk + " <--"
+				actual_risk = "Low";	
+			    
+			ORS = (LS + IST) / 2;
+			$(MS).children().eq(no)[0].innerText = "-> " + actual_risk + " <- ("+ORS+")";
                     });
                 });
         </script>
