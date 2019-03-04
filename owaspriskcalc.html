@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- Ivan Marković <ivanm@security-net.biz> -->
+<!-- John Bauer <john@oxt.co> Fixed risk factor when getRisk returns critical and added table indicators. -->
 <html>
     <head>
         <title>OWASP RISK CALCULATOR</title>
@@ -65,7 +66,14 @@
                         LS = LS / 8;
                         
                         risk = getRisk(LS);
+							
                         $(".LS").text("Score: O "+LS+" ("+risk+")");
+
+						if(risk == "Critical")
+							risk = "High";
+							
+						LS_risk = risk;
+							
                         $(".likelihood"+risk).addClass("selectedRisk");
                         MS = $(".likelihood"+risk).parent();
                         
@@ -83,18 +91,56 @@
                         
                         IST = IST / 8;
                         
-                        risk = getRisk(IST);
+						risk = getRisk(IST);
+							
                         $(".IS").text("Score: T "+IS1+" ("+getRisk(IS1)+") B "+IS2+" ("+getRisk(IS2)+") O "+IST+" ("+risk+")");
-                        $(".impact"+risk).addClass("selectedRisk");
+                        
+						if(risk == "Critical")
+							risk = "High"	
+							
+						IST_risk = risk;
+							
+						$(".impact"+risk).addClass("selectedRisk");
                         
                         no = 0;
                         if(risk == 'Low') no = 1;
                         if(risk == 'Medium') no = 2;
                         if(risk == 'High') no = 3;
-                        
+						
                         $(".row").children().removeClass("cMainScore")
+						
+						$(".likelihoodLow").parent().children().eq(1)[0].innerText = "Low"
+						$(".likelihoodLow").parent().children().eq(2)[0].innerText = "Low"
+						$(".likelihoodLow").parent().children().eq(3)[0].innerText = "Medium"
+						$(".likelihoodMedium").parent().children().eq(1)[0].innerText = "Low"
+						$(".likelihoodMedium").parent().children().eq(2)[0].innerText = "Medium"
+						$(".likelihoodMedium").parent().children().eq(3)[0].innerText = "High"
+						$(".likelihoodHigh").parent().children().eq(1)[0].innerText = "Medium"
+						$(".likelihoodHigh").parent().children().eq(2)[0].innerText = "High"
+						$(".likelihoodHigh").parent().children().eq(3)[0].innerText = "Critical"
+						
                         $(MS).children().eq(no).addClass("cMainScore")
-                        
+						
+						if(LS_risk == "High" && IST_risk == "High") 
+							actual_risk = "Critical";
+						else if(LS_risk == "High" && IST_risk == "Medium") 
+							actual_risk = "High";
+						else if(LS_risk == "High" && IST_risk == "Low") 
+							actual_risk = "Medium";
+						else if(LS_risk == "Medium" && IST_risk == "High") 
+							actual_risk = "High";
+						else if(LS_risk == "Medium" && IST_risk == "Medium") 
+							actual_risk = "Medium";
+						else if(LS_risk == "Medium" && IST_risk == "Low") 
+							actual_risk = "Low";							
+						else if(LS_risk == "Low" && IST_risk == "High") 
+							actual_risk = "Medium";
+						else if(LS_risk == "Low" && IST_risk == "Medium") 
+							actual_risk = "Low";
+						else if(LS_risk == "Low" && IST_risk == "Low") 
+							actual_risk = "Low";							
+							
+						$(MS).children().eq(no)[0].innerText = "--> " + actual_risk + " <--"
                     });
                 });
         </script>
