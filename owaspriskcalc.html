@@ -69,10 +69,10 @@
 							
                         $(".LS").text("Score: O "+LS+" ("+risk+")");
 
-						if(risk == "Critical")
-							risk = "High";
-							
-						LS_risk = risk;
+			if(risk == "Critical")
+				risk = "High";
+
+			LS_risk = risk;
 							
                         $(".likelihood"+risk).addClass("selectedRisk");
                         MS = $(".likelihood"+risk).parent();
@@ -91,17 +91,17 @@
                         
                         IST = IST / 8;
                         
-						risk = getRisk(IST);
+			risk = getRisk(IST);
 							
                         $(".IS").text("Score: T "+IS1+" ("+getRisk(IS1)+") B "+IS2+" ("+getRisk(IS2)+") O "+IST+" ("+risk+")");
-                        
-						if(risk == "Critical")
-							risk = "High"	
-							
-						IST_risk = risk;
-							
-						$(".impact"+risk).addClass("selectedRisk");
-                        
+
+			if(risk == "Critical")
+				risk = "High"	
+
+			IST_risk = risk;
+
+			$(".impact"+risk).addClass("selectedRisk");
+
                         no = 0;
                         if(risk == 'Low') no = 1;
                         if(risk == 'Medium') no = 2;
