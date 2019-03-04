@@ -109,38 +109,38 @@
 						
                         $(".row").children().removeClass("cMainScore")
 						
-						$(".likelihoodLow").parent().children().eq(1)[0].innerText = "Low"
-						$(".likelihoodLow").parent().children().eq(2)[0].innerText = "Low"
-						$(".likelihoodLow").parent().children().eq(3)[0].innerText = "Medium"
-						$(".likelihoodMedium").parent().children().eq(1)[0].innerText = "Low"
-						$(".likelihoodMedium").parent().children().eq(2)[0].innerText = "Medium"
-						$(".likelihoodMedium").parent().children().eq(3)[0].innerText = "High"
-						$(".likelihoodHigh").parent().children().eq(1)[0].innerText = "Medium"
-						$(".likelihoodHigh").parent().children().eq(2)[0].innerText = "High"
-						$(".likelihoodHigh").parent().children().eq(3)[0].innerText = "Critical"
+			$(".likelihoodLow").parent().children().eq(1)[0].innerText = "Low"
+			$(".likelihoodLow").parent().children().eq(2)[0].innerText = "Low"
+			$(".likelihoodLow").parent().children().eq(3)[0].innerText = "Medium"
+			$(".likelihoodMedium").parent().children().eq(1)[0].innerText = "Low"
+			$(".likelihoodMedium").parent().children().eq(2)[0].innerText = "Medium"
+			$(".likelihoodMedium").parent().children().eq(3)[0].innerText = "High"
+			$(".likelihoodHigh").parent().children().eq(1)[0].innerText = "Medium"
+			$(".likelihoodHigh").parent().children().eq(2)[0].innerText = "High"
+			$(".likelihoodHigh").parent().children().eq(3)[0].innerText = "Critical"
 						
                         $(MS).children().eq(no).addClass("cMainScore")
 						
-						if(LS_risk == "High" && IST_risk == "High") 
-							actual_risk = "Critical";
-						else if(LS_risk == "High" && IST_risk == "Medium") 
-							actual_risk = "High";
-						else if(LS_risk == "High" && IST_risk == "Low") 
-							actual_risk = "Medium";
-						else if(LS_risk == "Medium" && IST_risk == "High") 
-							actual_risk = "High";
-						else if(LS_risk == "Medium" && IST_risk == "Medium") 
-							actual_risk = "Medium";
-						else if(LS_risk == "Medium" && IST_risk == "Low") 
-							actual_risk = "Low";							
-						else if(LS_risk == "Low" && IST_risk == "High") 
-							actual_risk = "Medium";
-						else if(LS_risk == "Low" && IST_risk == "Medium") 
-							actual_risk = "Low";
-						else if(LS_risk == "Low" && IST_risk == "Low") 
-							actual_risk = "Low";							
-							
-						$(MS).children().eq(no)[0].innerText = "--> " + actual_risk + " <--"
+			if(LS_risk == "High" && IST_risk == "High") 
+				actual_risk = "Critical";
+			else if(LS_risk == "High" && IST_risk == "Medium") 
+				actual_risk = "High";
+			else if(LS_risk == "High" && IST_risk == "Low") 
+				actual_risk = "Medium";
+			else if(LS_risk == "Medium" && IST_risk == "High") 
+				actual_risk = "High";
+			else if(LS_risk == "Medium" && IST_risk == "Medium") 
+				actual_risk = "Medium";
+			else if(LS_risk == "Medium" && IST_risk == "Low") 
+				actual_risk = "Low";							
+			else if(LS_risk == "Low" && IST_risk == "High") 
+				actual_risk = "Medium";
+			else if(LS_risk == "Low" && IST_risk == "Medium") 
+				actual_risk = "Low";
+			else if(LS_risk == "Low" && IST_risk == "Low") 
+				actual_risk = "Low";							
+
+			$(MS).children().eq(no)[0].innerText = "--> " + actual_risk + " <--"
                     });
                 });
         </script>
